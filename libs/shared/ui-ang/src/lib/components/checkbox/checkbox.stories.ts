@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { RMPCheckbox } from "./checkbox";
 
 const meta: Meta<RMPCheckbox> = {
-    title: 'Checkbox',
+    title: 'Components/Checkbox',
     component: RMPCheckbox, 
     args: {
         label: 'Checkbox',

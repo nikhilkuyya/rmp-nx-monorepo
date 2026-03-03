@@ -5,7 +5,7 @@ import { Component, input } from "@angular/core";
     template: `
     <div class="space-x-2">
         <input type="checkbox" [checked]="checked()" [id]="id()"  
-        class="accent-red-500" />
+        class="accent-accent" />
         <label [for]="id()">{{ label() }}</label>
     </div>
     `,
@@ -14,4 +14,5 @@ export class RMPCheckbox {
     checked = input<boolean>(false);
     label = input.required<string>();
     id = input.required<string>();
+    
 }

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { RMPCheckbox, RmpButtonDirective } from '@rmp/shared/ui-ang';
-
+import { RmpButtonDirective , ButtonVariant, ButtonSize, RMPCheckbox} from "@rmp/shared/ui-ang";
 @Component({
   selector: 'app-test',
   templateUrl: './test.html',
-  imports: [RMPCheckbox, RmpButtonDirective]
+  imports: [RmpButtonDirective]
 })
 export class TestComponent {
   constructor() {

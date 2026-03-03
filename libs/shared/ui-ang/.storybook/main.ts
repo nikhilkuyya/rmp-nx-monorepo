@@ -11,15 +11,19 @@ const customWebpackConfig =  {
   },
 }
 
-
-
 const config: StorybookConfig = {
-  stories: ['../**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: [],  
+  stories: [
+    "../src/**/*.mdx",
+    '../**/*.stories.@(js|jsx|ts|tsx)'
+  ],
+  addons: [
+    "@storybook/addon-themes",
+    "@storybook/addon-docs"
+  ],
   framework: '@storybook/angular',
   webpackFinal: async (config) => {
     return {
-      ...config,
+      ...config,      
       module: {
         ...config.module,
         rules: [

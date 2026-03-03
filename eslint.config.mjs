@@ -36,6 +36,10 @@ export default [
               sourceTag: 'type:data',
               onlyDependOnLibsWithTags: ['type:data'],
             },
+            {
+              sourceTag: 'scope:rmp-invoice',
+              onlyDependOnLibsWithTags: ['scope:rmp-invoice', 'scope:shared'],
+            }
           ],
         },
       ],

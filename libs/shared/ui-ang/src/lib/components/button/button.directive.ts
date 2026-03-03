@@ -1,9 +1,9 @@
-import { Directive, ElementRef, inject, Input, input, OnChanges, OnInit, Renderer2, SimpleChanges } from "@angular/core";
-
+import { Directive, ElementRef, inject, input, OnChanges, OnInit, Renderer2, SimpleChanges } from "@angular/core";
+import { cva, VariantProps } from 'class-variance-authority';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
-const variantToClassMap: Record<ButtonVariant, string> = {
-    primary: 'btn-primary',
+const variantToClassMap: Record<ButtonVariant, string | string[]> = {
+    primary: ['bg-primary', 'text-secondary', 'dark:bg-secondary', 'dark:text-primary'],
     secondary: 'btn-secondary',
     outline: 'btn-outline',
     ghost: 'btn-ghost',
@@ -17,6 +17,22 @@ const sizeToClassMap: Record<ButtonSize, string> = {
     large: 'btn-large',
 };
 
+
+const buttonVariants = cva(
+    'btn',
+    {
+        variants: {
+            variant: variantToClassMap,
+            size: sizeToClassMap,
+        },
+        defaultVariants: {
+            variant: 'primary',
+            size: 'medium',
+        },
+    },    
+);
+
+export type ButtonVariants = VariantProps<typeof buttonVariants>;
 @Directive({
     selector: 'button[rmpButton]'
 })
@@ -28,20 +44,37 @@ export class RmpButtonDirective implements OnInit, OnChanges {
     size = input<ButtonSize>('medium');
 
     ngOnInit() {
-        this.renderer.addClass(this.elementRef.nativeElement, 'btn');
-        this.renderer.addClass(this.elementRef.nativeElement, variantToClassMap[this.variant()]);
-        this.renderer.addClass(this.elementRef.nativeElement, sizeToClassMap[this.size()]);
+        console.log('ngOnInit', this.variant(), this.size());
+        const classes = buttonVariants({
+            variant: this.variant(),
+            size: this.size(),
+        }).split(' ');
+
+        classes.forEach(className => {
+            this.renderer.addClass(this.elementRef.nativeElement, className);
+        });
     }
 
     ngOnChanges(changes: SimpleChanges) {
+        console.log('ngOnChanges', changes);
         if (changes['variant']) {
             const previousValue = changes['variant'].previousValue as ButtonVariant;
             const currentValue = changes['variant'].currentValue as ButtonVariant;
             if (previousValue) {
-                this.renderer.removeClass(this.elementRef.nativeElement, variantToClassMap[previousValue]);
+                const variantClasses = buttonVariants({
+                    variant: previousValue,
+                }).split(' ');
+                variantClasses.forEach(className => {
+                    this.renderer.removeClass(this.elementRef.nativeElement, className);
+                });
             }
             if (currentValue) {
-                this.renderer.addClass(this.elementRef.nativeElement, variantToClassMap[currentValue]);
+                const currentVariantClasses = buttonVariants({
+                    variant: currentValue,
+                }).split(' ');
+                currentVariantClasses.forEach(className => {
+                    this.renderer.addClass(this.elementRef.nativeElement, className);
+                });
             }
         }
 

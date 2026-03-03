@@ -36,7 +36,7 @@ cd <your-repository-name>
 
 # Install dependencies
 # (Note: You may need --legacy-peer-deps)
-npm install
+npm install --legacy-peer-deps # as we have storybook conflict with angular lookup.
 
 # Serve the Angular shop application (this will simultaneously serve the API backend)
 npx nx serve shop

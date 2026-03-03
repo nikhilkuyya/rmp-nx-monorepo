@@ -1,27 +1,17 @@
-import type { ButtonSize, ButtonVariant } from "./button.directive";
+import type { ButtonVariants } from "./button.directive";
 import { RmpButtonDirective } from "./button.directive";
 import { Meta, moduleMetadata, StoryObj } from "@storybook/angular";
-import { Component } from "@angular/core";
 
-@Component({
-    selector: 'rmp-button',
-    template: `
-        <button rmpButton [variant]="variant" [size]="size">Hello</button>
-    `,
-})
-class ButtonComponent  {
-    variant: ButtonVariant = 'primary';
-    size: ButtonSize = 'medium';
-}
-
-const meta: Meta<ButtonComponent> = {
-    title: 'Button',
-    component: ButtonComponent,
-    decorators: [   
-        moduleMetadata({
-            imports: [RmpButtonDirective],
-        }),
-    ],
+const meta: Meta<RmpButtonDirective> = {
+    title: 'Components/Button',
+    component: RmpButtonDirective,    
+    render: (args: ButtonVariants) => {
+        const { variant, size } = args;
+        return {
+            template: `<button rmpButton [variant]="variant" [size]="size">Hello</button>`,
+            props: args,
+        }
+    },
     argTypes: {
         variant: {
             control: 'select',
@@ -31,12 +21,16 @@ const meta: Meta<ButtonComponent> = {
             control: 'select',
             options: ['small', 'medium', 'large'],
         },
-    }
+    },
+    args: {
+        variant: 'primary',
+        size: 'medium',
+    },    
 };
 
 export default meta;
 
-type Story = StoryObj<ButtonComponent>;
+type Story = StoryObj<RmpButtonDirective>;
 
 export const Primary: Story = {
     args: {
@@ -50,4 +44,20 @@ export const Secondary: Story = {
         variant: 'secondary',
         size: 'medium',
     },
+}
+
+export const DarkMode: Story = {
+    parameters: {
+        themes: {
+            themeOverride: 'dark',
+        }
+    }
+}
+
+export const MobileViewPort: Story = {
+    parameters: {
+        viewport: {
+            defaultViewport: 'mobile1',
+        },
+    }
 }
