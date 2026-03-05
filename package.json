@@ -10,7 +10,8 @@
     "start:storybook": "nx run ui-ang:storybook",
     "build:storybook": "nx run ui-ang:build-storybook",
     "test:ally:storybook": "npx test-storybook  --url=http://localhost:4400 --config-dir=libs/shared/ui-ang/.storybook",
-    "chromatic": "npx chromatic --project-token=chpt_fa6c88e2c6d485d --build-script-name=build:storybook"
+    "chromatic": "npx chromatic --project-token=chpt_fa6c88e2c6d485d --build-script-name=build:storybook",
+    "lint": "nx run lint"
   },
   "private": true,
   "dependencies": {
@@ -67,6 +68,7 @@
     "@swc/core": "1.15.8",
     "@swc/helpers": "0.5.18",
     "@tailwindcss/postcss": "^4.2.0",
+    "@types/eslint-plugin-tailwindcss": "^3.17.0",
     "@types/express": "^4.17.21",
     "@types/node": "20.19.9",
     "@types/supertest": "^6.0.3",
@@ -82,6 +84,7 @@
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-playwright": "^1.6.2",
+    "eslint-plugin-tailwindcss": "^3.18.2",
     "jiti": "2.4.2",
     "jsdom": "~22.1.0",
     "jsonc-eslint-parser": "^2.1.0",
