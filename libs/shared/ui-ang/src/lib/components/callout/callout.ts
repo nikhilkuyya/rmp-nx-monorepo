@@ -1,5 +1,6 @@
-import { Component, input } from "@angular/core";
+import { Component, inject, input } from "@angular/core";
 import { cva, VariantProps } from "class-variance-authority";
+import { CALLOUT_CONTEXT } from "./callout.context";
 
 const calloutVariants = cva('p-3 border-4 rounded-xl space-y-2', {
     variants: {
@@ -17,11 +18,13 @@ export type CalloutType = VariantProps<typeof calloutVariants>;
     selector: 'rmp-callout',
     template: `<div [class]="baseWrapperClasses">
             <h3 class="font-bold">{{ title() }}</h3>
+            <pre>{{ testContext }}</pre>
             <ng-content></ng-content>
     </div>
     `,
 })
 export class RMPCallout {
+    testContext = inject(CALLOUT_CONTEXT)
     title = input.required<string>();
     description = input.required<string>();
     type = input.required<CalloutType['type']>();
