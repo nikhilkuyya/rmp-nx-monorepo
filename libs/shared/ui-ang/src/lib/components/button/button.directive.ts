@@ -44,7 +44,6 @@ export class RmpButtonDirective implements OnInit, OnChanges {
     size = input<ButtonSize>('medium');
 
     ngOnInit() {
-        console.log('ngOnInit', this.variant(), this.size());
         const classes = buttonVariants({
             variant: this.variant(),
             size: this.size(),
@@ -56,7 +55,6 @@ export class RmpButtonDirective implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        console.log('ngOnChanges', changes);
         if (changes['variant']) {
             const previousValue = changes['variant'].previousValue as ButtonVariant;
             const currentValue = changes['variant'].currentValue as ButtonVariant;

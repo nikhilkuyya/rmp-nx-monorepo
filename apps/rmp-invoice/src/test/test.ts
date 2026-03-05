@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
-import { RmpButtonDirective , ButtonVariant, ButtonSize, RMPCheckbox} from "@rmp/shared/ui-ang";
+import { Component, signal } from '@angular/core';
+import { RmpButtonDirective, RMPCheckbox} from "@rmp/shared/ui-ang";
 @Component({
   selector: 'app-test',
   templateUrl: './test.html',
-  imports: [RmpButtonDirective]
+  imports: [RmpButtonDirective, RMPCheckbox]
 })
 export class TestComponent {
-  constructor() {
-    console.log('TestComponent constructor');
+  checked = signal<boolean>(false);
+
+  onCheckboxChange(changed: boolean) {
+    this.checked.set(changed);
   }
+
 }
