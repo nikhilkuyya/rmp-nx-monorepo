@@ -9,7 +9,8 @@
     "ng": "nx",
     "start:storybook": "nx run ui-ang:storybook",
     "build:storybook": "nx run ui-ang:build-storybook",
-    "test:storybook": "npx test-storybook  --url=http://localhost:4400 --config-dir=libs/shared/ui-ang/.storybook"
+    "test:ally:storybook": "npx test-storybook  --url=http://localhost:4400 --config-dir=libs/shared/ui-ang/.storybook",
+    "chromatic": "npx chromatic --project-token=chpt_fa6c88e2c6d485d --build-script-name=build:storybook"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +39,7 @@
     "@angular/cli": "21.1.1",
     "@angular/compiler-cli": "21.1.1",
     "@angular/language-service": "21.1.1",
+    "@chromatic-com/storybook": "^5.0.1",
     "@eslint/js": "^9.8.0",
     "@nx/angular": "22.5.0",
     "@nx/devkit": "22.5.0",
@@ -55,6 +57,7 @@
     "@nx/workspace": "22.5.0",
     "@playwright/test": "^1.36.0",
     "@schematics/angular": "21.1.1",
+    "@storybook/addon-a11y": "^10.2.14",
     "@storybook/addon-themes": "^10.2.10",
     "@storybook/angular": "10.2.10",
     "@storybook/builder-vite": "^10.2.10",
@@ -72,6 +75,8 @@
     "@vitest/ui": "4.0.9",
     "angular-eslint": "21.1.0",
     "autoprefixer": "^10.4.27",
+    "axe-playwright": "^2.2.2",
+    "chromatic": "^15.2.0",
     "css-loader": "^7.1.4",
     "esbuild": "^0.19.2",
     "eslint": "^9.8.0",

@@ -18,7 +18,9 @@ const config: StorybookConfig = {
   ],
   addons: [
     "@storybook/addon-themes",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
+    "@chromatic-com/storybook",
+    "@storybook/addon-a11y"
   ],
   framework: '@storybook/angular',
   webpackFinal: async (config) => {
