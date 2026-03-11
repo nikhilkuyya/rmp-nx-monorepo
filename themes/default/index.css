@@ -3,12 +3,10 @@
 @theme {
     --color-primary: magenta;
     --color-secondary: maroon;
-    --color-accent: green;
-    --color-background: yellow;
+    --color-accent: green;    
     --color-info: cyan;
-    --color-text: black;
-    --color-border: gray;
     --color-black: #008;
+    --color-white: #fff;
 }
 
 @custom-variant dark (&:where([data-mode=dark], [data-mode=dark] *));

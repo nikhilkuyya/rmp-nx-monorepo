@@ -3,7 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
 const variantToClassMap: Record<ButtonVariant, string | string[]> = {
-    primary: ['bg-primary', 'text-secondary', 'dark:bg-secondary', 'dark:text-primary'],
+    primary: ['bg-primary', 'dark:bg-white','dark:text-primary', 'hover:outline-2'],
     secondary: 'btn-secondary',
     outline: 'btn-outline',
     ghost: 'btn-ghost',
@@ -19,7 +19,7 @@ const sizeToClassMap: Record<ButtonSize, string> = {
 
 
 const buttonVariants = cva(
-    'btn',
+    'px-3 py-1 border-1 rounded-md my-2',
     {
         variants: {
             variant: variantToClassMap,
