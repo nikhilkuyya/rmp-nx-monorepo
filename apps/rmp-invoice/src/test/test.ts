@@ -1,7 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { RmpButtonDirective, RMPCheckbox} from "@rmp/shared/ui-ang";
+
 @Component({
-  selector: 'app-test',
+  selector: 'rmp-test',
   templateUrl: './test.html',
   imports: [RmpButtonDirective, RMPCheckbox]
 })

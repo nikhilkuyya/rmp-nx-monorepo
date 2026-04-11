@@ -1,7 +1,12 @@
 import { Route } from '@angular/router';
-import { TestComponent } from '../test/test';
+import { DashboardComponent } from './dashboard/dashboard';
+import { InvoicesComponent } from './invoices/invoices';
 
 export const appRoutes: Route[] = [{
     path: '',
-    component: TestComponent,
+    component: DashboardComponent,
+},
+{
+    path: 'invoices',
+    component: InvoicesComponent,
 }];

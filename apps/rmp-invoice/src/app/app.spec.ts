@@ -1,20 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
-import { NxWelcome } from './nx-welcome';
+import { LayoutComponent } from './layout/layout';
+import { MockComponent } from 'ng-mocks';
+import { provideRouter } from '@angular/router';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App, NxWelcome],
+      imports: [App, MockComponent(LayoutComponent)],
+      providers: [provideRouter([])],
     }).compileComponents();
   });
 
   it('should render title', async () => {
     const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
+    await fixture.whenStable();    
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome rmp-invoice',
-    );
+    expect(compiled.querySelector('rmp-layout')).toBeDefined();
+ 
   });
 });

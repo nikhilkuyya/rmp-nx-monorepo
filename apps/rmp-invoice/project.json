@@ -2,7 +2,7 @@
   "name": "rmp-invoice",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "rmp",
   "sourceRoot": "apps/rmp-invoice/src",
   "tags": ["scope:rmp-invoice"],
   "targets": {
@@ -69,6 +69,13 @@
         "port": 4200,
         "staticFilePath": "dist/apps/rmp-invoice/browser",
         "spa": true
+      }
+    },
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/apps/rmp-invoice"
       }
     }
   }

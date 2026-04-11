@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { LayoutComponent } from './layout/layout';
 
 @Component({
-  imports: [ RouterModule],
-  selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrl: './app.css',
+  imports: [LayoutComponent],
+  selector: 'rmp-root',
+  template: '<rmp-layout></rmp-layout>',
 })
 export class App {
-  protected title = 'rmp-invoice';
 }

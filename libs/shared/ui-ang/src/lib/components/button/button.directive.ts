@@ -23,7 +23,7 @@ const buttonVariants = cva(
     {
         variants: {
             variant: variantToClassMap,
-            size: sizeToClassMap,
+            size: sizeToClassMap,            
         },
         defaultVariants: {
             variant: 'primary',
