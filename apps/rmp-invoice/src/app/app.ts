@@ -4,7 +4,9 @@ import { LayoutComponent } from './layout/layout';
 @Component({
   imports: [LayoutComponent],
   selector: 'rmp-root',
-  template: '<rmp-layout></rmp-layout>',
+  template: `<div class="bg-primary-light">
+  <rmp-layout></rmp-layout>
+  </div>`,
 })
 export class App {
 }

@@ -7,5 +7,4 @@ import { Component } from "@angular/core";
   templateUrl: './invoices.html',
 })
 export class InvoicesComponent {
-
 }

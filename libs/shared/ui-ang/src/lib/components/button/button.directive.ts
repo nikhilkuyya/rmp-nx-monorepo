@@ -1,10 +1,11 @@
 import { Directive, ElementRef, inject, input, OnChanges, OnInit, Renderer2, SimpleChanges } from "@angular/core";
 import { cva, VariantProps } from 'class-variance-authority';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'accent';
 const variantToClassMap: Record<ButtonVariant, string | string[]> = {
-    primary: ['bg-primary', 'dark:bg-white','dark:text-primary', 'hover:outline-2'],
-    secondary: 'btn-secondary',
+    primary: ['bg-primary',  'hover:bg-primary-light'],
+    secondary: ['bg-secondary',  'hover:bg-secondary-light', ],
+    accent: ['bg-accent', 'hover:bg-accent-light'],
     outline: 'btn-outline',
     ghost: 'btn-ghost',
     link: 'btn-link',
@@ -19,7 +20,7 @@ const sizeToClassMap: Record<ButtonSize, string> = {
 
 
 const buttonVariants = cva(
-    'px-3 py-1 border-1 rounded-md my-2',
+    'px-3 py-1 border-1 rounded-md my-2 hover:outline-2 hover:cursor-pointer',
     {
         variants: {
             variant: variantToClassMap,
