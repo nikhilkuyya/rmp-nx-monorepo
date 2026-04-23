@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/angular";
 import { RMPInput } from "./input";
 
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 const meta: Meta<RMPInput> = {
     title: 'Components/Input',
