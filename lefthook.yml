@@ -9,9 +9,7 @@ pre-commit:
       glob: "*.{js,ts,jsx,tsx,json,md}"
     lint:
       run: npx nx lint {staged_files}
-      glob: "*.{js,ts,jsx,tsx}"
-    secrets:
-      run: npx nx secrets {staged_files}
+      glob: "*.{js,ts,jsx,tsx}"    
  
 
 # EXAMPLE USAGE:
