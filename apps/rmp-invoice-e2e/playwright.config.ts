@@ -8,7 +8,17 @@ const path = require('path');
  * https://github.com/motdotla/dotenv
  */
 require('dotenv').config({
-  path : path.resolve(__dirname, '../.env')
+  path : path.resolve(__dirname, '../.env'),
+  reporter: [
+    ['html', { open: 'never', outputFolder: 'playwright-report/html' }],
+    ['json', { outputFile: 'playwright-report/report.json' }],
+    ['list'],
+  ],
+  use: {
+    trace: 'retain-on-failure',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+  }
 });
 
 // For CI, you may want to set BASE_URL to the deployed application.
