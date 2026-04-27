@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "prepare": "lefthook install",
     "start:inv": "nx run rmp-invoice:serve",
     "build:inv": "nx run rmp-invoice:build",
     "e2e:inv": "nx run rmp-invoice-e2e:e2e",
@@ -12,8 +13,9 @@
     "start:storybook": "nx run ui-ang:storybook",
     "build:storybook": "nx run ui-ang:build-storybook",
     "test:ally:storybook": "npx test-storybook  --url=http://localhost:4400 --config-dir=libs/shared/ui-ang/.storybook",
-    "chromatic": "npx chromatic --project-token=chpt_fa6c88e2c6d485d --build-script-name=build:storybook",
-    "lint": "nx run lint"
+    "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN --build-script-name=build:storybook",
+    "lint": "nx run lint",
+    "start:api": "nx run api:serve"
   },
   "private": true,
   "dependencies": {
@@ -92,6 +94,7 @@
     "jiti": "2.4.2",
     "jsdom": "~22.1.0",
     "jsonc-eslint-parser": "^2.1.0",
+    "lefthook": "^2.1.6",
     "ng-mocks": "^14.15.2",
     "nx": "22.5.0",
     "postcss": "^8.5.6",
