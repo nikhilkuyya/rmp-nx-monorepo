@@ -1,15 +1,11 @@
 pre-commit:
   parallel: true
   commands:
-    eslint:
-      run: npx nx eslint {staged_files}
-      glob: "*.{js,ts,jsx,tsx}"
-    prettier:
-      run: npx nx prettier --check {staged_files}
-      glob: "*.{js,ts,jsx,tsx,json,md}"
     lint:
-      run: npx nx lint {staged_files}
-      glob: "*.{js,ts,jsx,tsx}"    
+      run: npx nx lint rmp-invoice {staged_files}      
+    test:
+      run: npx nx test rmp-invoice {staged_files}
+      
  
 
 # EXAMPLE USAGE:
