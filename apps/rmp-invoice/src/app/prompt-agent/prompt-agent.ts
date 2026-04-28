@@ -1,51 +1,32 @@
 import { CommonModule } from "@angular/common";
-import { HttpClient, httpResource } from "@angular/common/http";
-import { Component, effect, inject, signal } from "@angular/core";
-import { form } from "@angular/forms/signals";
-import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, linkedSignal, signal } from "@angular/core";
 import { RmpButtonDirective } from "@rmp/shared/ui-ang";
+import { PromptService } from "../services/prompt.service";
+import { form, FormField, required } from '@angular/forms/signals';
 
 @Component({
     selector: 'rmp-prompt-agent',
     templateUrl: './prompt-agent.html',
-    imports: [CommonModule, ReactiveFormsModule, RmpButtonDirective],
+    imports: [CommonModule, RmpButtonDirective, FormField],
 })
 export class PromptAgent {
-    promptFormModel = signal<{ prompt: string, response: string }>({ prompt: '', response: '' });
-    promptForm = inject(NonNullableFormBuilder).group({
-        prompt: ['', Validators.required],
+
+    promptService = inject(PromptService);
+    model = signal({
+        prompt: '',
     });
-    httpClient = inject(HttpClient);
+    promptForm = form(this.model, (path) => {
+        required(path.prompt);
+    });
 
-    promptFormSignal = form(this.promptFormModel);
+    submitPrompt = signal('')
 
-    promptResource = httpResource(() => {
-        return {
-            url: 'http://localhost:3333/api/agent',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-    }, {
-        defaultValue: {
-            prompt: '',
-        },
-    })
-
-    constructor() {
-        effect(() => {
-            if (this.promptResource.hasValue()) {
-                this.promptForm.patchValue(this.promptResource.value() as any);
-            }
-        });
-    }
-
+    promptHttpResource = this.promptService.getPromptResponse(this.submitPrompt);
+   
+    promptResponse = linkedSignal(() => this.promptHttpResource.hasValue() ? this.promptHttpResource.value() : '');
+    
     onSubmit(event: Event) {
         event.preventDefault();
-
-        this.httpClient.post('http://localhost:3333/api/agent', this.promptForm.getRawValue()).subscribe((response) => {
-            this.promptFormModel.set({ ...this.promptFormModel(), response: response as string });
-        });
+        this.submitPrompt.set(this.promptForm.prompt().controlValue());        
     }
 }
