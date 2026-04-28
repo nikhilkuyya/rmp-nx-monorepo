@@ -1,0 +1,20 @@
+{
+  "name": "rmp-invoices",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api/domain/invoices/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/api/domain/invoices",
+        "tsConfig": "libs/api/domain/invoices/tsconfig.lib.json",
+        "packageJson": "libs/api/domain/invoices/package.json",
+        "main": "libs/api/domain/invoices/src/index.ts",
+        "assets": ["libs/api/domain/invoices/*.md"]
+      }
+    }
+  }
+}
