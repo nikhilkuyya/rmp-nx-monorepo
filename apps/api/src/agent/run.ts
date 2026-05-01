@@ -2,11 +2,11 @@ import "dotenv/config";
 
 import { openai } from '@ai-sdk/openai';
 import { generateText } from 'ai';
+import { getModel } from "./model.helper";
 
-const MODEL = "gpt-4o-mini";
+const MODEL = getModel();
 
 const run = async (message: string) => {
-    console.log(message);
     const response = await generateText({
         model: openai(MODEL),
         prompt: message        
