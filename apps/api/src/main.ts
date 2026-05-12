@@ -1,7 +1,7 @@
 import express from 'express';
-import clientRouter from './routes/client';
-import invoiceRouter from './routes/invoice';
-import agentRouter from './routes/agent';
+import { clientRouter, invoiceRouter, agentRouter } from './routes';
+import helmet from 'helmet';
+import morgan from 'morgan';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3333;
@@ -9,9 +9,13 @@ const port = process.env.PORT ? Number(process.env.PORT) : 3333;
 const app = express();
 
 // Middleware
+app.use(helmet());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 
 // CORS configuration for Angular app
+// app.use(cors());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
