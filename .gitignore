@@ -57,3 +57,4 @@ build-storybook.log
 
 # Env
 .env
+**/.env

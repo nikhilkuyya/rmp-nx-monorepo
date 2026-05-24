@@ -1,0 +1,13 @@
+{
+  "name": "rmp-invoice-web-core",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/rmp-invoice-app/core/src",
+  "prefix": "bmmb",
+  "projectType": "library",
+  "tags": ["scope:rmp-invoice", "scope:shared"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

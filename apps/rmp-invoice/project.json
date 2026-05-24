@@ -10,7 +10,7 @@
       "executor": "@angular/build:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/rmp-invoice",
+        "outputPath": "apps/rmp-invoice/dist/",
         "browser": "apps/rmp-invoice/src/main.ts",
         "tsConfig": "apps/rmp-invoice/tsconfig.app.json",
         "assets": [
@@ -77,6 +77,9 @@
       "options": {
         "reportsDirectory": "../../coverage/apps/rmp-invoice"
       }
+    },
+    "docker:build": {
+      "dependsOn": ["build"]
     }
   }
 }
