@@ -18,7 +18,11 @@
     "test:ally:storybook": "npx test-storybook  --url=http://localhost:4400 --config-dir=libs/shared/ui-ang/.storybook",
     "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN --build-script-name=build:storybook",
     "lint": "nx run lint",
-    "start:api": "nx run api:serve"
+    "start:api": "nx run api:serve",
+    "migration:rollback":"knex migrate:rollback",
+    "migrate":"knex migrate:latest",
+    "migration:make":"knex migrate:make",
+    "migration:status":"knex migrate:list"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +43,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^4.21.2",
     "helmet": "^8.1.0",
     "knex": "^3.2.10",
