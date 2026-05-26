@@ -13,8 +13,8 @@ export async function up(knex: Knex): Promise<void> {
         table.string("invoice_email").notNullable();
         table.timestamp("created_at",{
             useTz: false                        
-        }).defaultTo(new Date(Date.now()).toTimeString())
-        table.timestamp("updated_at",{ useTz: false}).defaultTo(new Date(Date.now()).toTimeString())
+        }).defaultTo(knex.fn.now())
+        table.timestamp("updated_at",{ useTz: false}).defaultTo(knex.fn.now())
     });
 }
 

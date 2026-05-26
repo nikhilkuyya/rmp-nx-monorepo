@@ -1,1 +1,1 @@
-.tables
+select * from 'clients';
