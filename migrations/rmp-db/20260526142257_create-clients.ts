@@ -6,6 +6,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string("company_name").notNullable();
         table.string("company_gstin").notNullable();
         table.string("company_address").notNullable();
+        table.string("company_postal_code").notNullable();
         table.string("company_country").notNullable().defaultTo("Bharat");
         table.string("company_city").notNullable().defaultTo("Hyderabad");
         table.string("company_state").notNullable().defaultTo("Telangana");

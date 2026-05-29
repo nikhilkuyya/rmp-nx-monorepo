@@ -60,5 +60,5 @@ build-storybook.log
 **/.env
 
 # sql db
-dev.rmpdb.sqlite3
-prod.rmpdb.sqlite3
+./dev.rmpdb.sqlite3
+./prod.rmpdb.sqlite3

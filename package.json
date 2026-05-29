@@ -22,7 +22,9 @@
     "migration:rollback":"knex migrate:rollback",
     "migrate":"knex migrate:latest",
     "migration:make":"knex migrate:make",
-    "migration:status":"knex migrate:list"
+    "migration:status":"knex migrate:list",
+    "migration:seed":"knex seed:make",
+    "seed:run":"knex seed:run"
   },
   "private": true,
   "dependencies": {

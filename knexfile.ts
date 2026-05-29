@@ -10,6 +10,9 @@ const config: { [key: string]: Knex.Config } = {
     useNullAsDefault: true,
     migrations: {
        directory: './migrations/rmp-db'
+    },
+    seeds: {
+      directory: './seeds/rmp-db-dev'
     }
   },
   production: {
@@ -20,6 +23,9 @@ const config: { [key: string]: Knex.Config } = {
     useNullAsDefault: true,
     migrations: {
       directory: "./migrations/rmp-db"
+    },
+    seeds: {
+      directory: './seeds/rmp-db-prod'
     }
   }
 };
