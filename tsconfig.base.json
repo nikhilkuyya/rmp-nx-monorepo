@@ -25,7 +25,8 @@
       "@rmp/clients": ["libs/api/shared/clients/src/index.ts"],
       "@rmp/invoices": ["libs/api/domain/invoices/src/index.ts"],
       "@rmp/models": ["libs/shared/models/src/index.ts"],
-      "@rmp/invoice-web-core": ["libs/rmp-invoice-app/core/src/index.ts"]
+      "@rmp/invoice-web-core": ["libs/rmp-invoice-app/core/src/index.ts"],
+      "@rmp/shared-core": ["libs/shared/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

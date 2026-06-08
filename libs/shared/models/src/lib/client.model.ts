@@ -1,6 +1,6 @@
 import { RMPAddress } from "./shared.model";
 
-export interface RMPClient {
+export interface RMPClientModel {
     id: string;
     companyName: string;
     companyGSTIn: string;
@@ -11,7 +11,7 @@ export interface RMPClient {
     updatedAt: string;    
 }
 
-export interface RMPClientPaylod {
+export interface RMPCreateClientPaylod {
     companyName: string;
     companyGSTIn: string;
     address: RMPAddress;

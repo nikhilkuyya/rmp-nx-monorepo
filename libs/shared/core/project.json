@@ -1,0 +1,75 @@
+{
+  "name": "rmp-core",  
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/core/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project rmp-core --web",
+  "targets": {
+    "rollback": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "knex migrate:rollback --knexfile=$KNEX_FILE",
+        "env": {
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+        }
+      }
+    },
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "knex migrate:latest --knexfile=$KNEX_FILE",
+        "env": {
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+        }
+      }
+    },
+    "make": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "knex migrate:make --knexfile=$KNEX_FILE",
+        "env": {
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+        }
+      }
+    },
+    "seed-make": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "knex seed:make --knexfile=$KNEX_FILE",
+        "env": {
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+        }
+      }
+    },
+    "seed-run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "knex seed:run --knexfile=$KNEX_FILE",
+        "env": {
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+        }
+      }
+    },
+    "status": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "knex migrate:list --knexfile=$KNEX_FILE",
+        "env": {
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+        }
+      }
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/core",
+        "tsConfig": "libs/shared/core/tsconfig.lib.json",
+        "packageJson": "libs/shared/core/package.json",
+        "main": "libs/shared/cored/src/index.ts",
+        "assets": ["libs/shared/core/*.md"]
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import * as v from 'valibot';
 import { validationBody } from "../middleware/validation";
+import { getClients } from '@rmp/invoices';
 
 const router = Router();
 
@@ -11,8 +12,9 @@ const createClientSchema = v.object({
   address: v.string(),
 });
 
-router.get("/", (req, res) => {
-  res.json([]);
+router.get("/", async (req, res) => {
+  const clients = await getClients(req, res);
+  res.json(clients);
 });
 
 router.get("/:id", (req, res) => {

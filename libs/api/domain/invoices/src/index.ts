@@ -1,1 +1,1 @@
-export * from './lib/rmp-invoices';
+export * from './lib/controllers/client.controller';
