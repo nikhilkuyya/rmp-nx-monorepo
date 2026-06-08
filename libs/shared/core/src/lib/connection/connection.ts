@@ -1,4 +1,12 @@
 import knex from 'knex';
-import knexfile from '../knexfile';
+const knexfile = require('../knexfile.cjs');
 
-export const db = knex(knexfile['development'])
+// Now you can safely read it
+const dbConfig = knexfile.development;
+
+export const db = knex(dbConfig);
+
+db.on('query', (queryData) => {
+  const dbFile = dbConfig.connection.filename;
+  console.log(`[Database: ${dbFile}] Running query: ${queryData.sql}`);
+});

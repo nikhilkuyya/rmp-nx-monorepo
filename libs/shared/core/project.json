@@ -11,7 +11,7 @@
       "options": {
         "command": "knex migrate:rollback --knexfile=$KNEX_FILE",
         "env": {
-          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.cjs"
         }
       }
     },
@@ -20,7 +20,7 @@
       "options": {
         "command": "knex migrate:latest --knexfile=$KNEX_FILE",
         "env": {
-          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.cjs"
         }
       }
     },
@@ -29,7 +29,7 @@
       "options": {
         "command": "knex migrate:make --knexfile=$KNEX_FILE",
         "env": {
-          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.cjs"
         }
       }
     },
@@ -38,7 +38,7 @@
       "options": {
         "command": "knex seed:make --knexfile=$KNEX_FILE",
         "env": {
-          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.cjs"
         }
       }
     },
@@ -47,7 +47,7 @@
       "options": {
         "command": "knex seed:run --knexfile=$KNEX_FILE",
         "env": {
-          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.cjs"
         }
       }
     },
@@ -56,7 +56,7 @@
       "options": {
         "command": "knex migrate:list --knexfile=$KNEX_FILE",
         "env": {
-          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.ts"
+          "KNEX_FILE": "{projectRoot}/src/lib/knexfile.cjs"
         }
       }
     },
@@ -68,7 +68,7 @@
         "tsConfig": "libs/shared/core/tsconfig.lib.json",
         "packageJson": "libs/shared/core/package.json",
         "main": "libs/shared/cored/src/index.ts",
-        "assets": ["libs/shared/core/*.md"]
+        "assets": ["libs/shared/core/*.md", "libs/shared/core/src/lib/knexfile.cjs"]
       }
     }
   }

@@ -1,19 +1,21 @@
-import type { Knex } from "knex";
+const path = require('path');
+
 
 // Update with your config settings.
-const config: { [key: string]: Knex.Config } = {
+module.exports = {
   development: {
     client: "sqlite3",
     connection: {
-      filename: "./dev.rmpdb.sqlite3"
+      filename: path.resolve(path.dirname(__filename),"./dev.rmpdb.sqlite3"),
     },
     useNullAsDefault: true,
     migrations: {
-       directory: './migrations/rmp-db'
+       directory: path.resolve(path.dirname(__filename),'./migrations/rmp-db'),
     },
     seeds: {
-      directory: './seeds/rmp-db-dev'
-    }
+      directory: path.resolve(path.dirname(__filename),'./seeds/rmp-db-dev')
+    },
+    debug: true
   },
   production: {
     client: "sqlite3",
@@ -29,5 +31,3 @@ const config: { [key: string]: Knex.Config } = {
     }
   }
 };
-
-export default config;

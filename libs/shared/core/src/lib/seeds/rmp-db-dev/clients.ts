@@ -1,6 +1,6 @@
 import type { Knex } from 'knex';
 
-export async function seed(knex: Knex): Promise<void> {
+module.exports.seed = async function (knex: Knex): Promise<void> {
   // Deletes ALL existing entries
   await knex('clients').del();
 
