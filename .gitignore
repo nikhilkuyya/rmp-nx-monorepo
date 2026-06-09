@@ -45,7 +45,8 @@ Thumbs.db
 .github/instructions/nx.instructions.md
 
 .angular
-.claude
+.claude/*
+!.claude/skills/
 .playwright-mcp
 
 vite.config.*.timestamp*
