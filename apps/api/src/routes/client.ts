@@ -1,16 +1,9 @@
 import { Router } from "express";
-import * as v from 'valibot';
 import { validationBody } from "../middleware/validation";
-import { getClients } from '@rmp/invoices';
+import { createClient, getClients } from '@rmp/invoices';
+import { rmpCreateClientPayloadSchema  } from '@rmp/models';
 
 const router = Router();
-
-const createClientSchema = v.object({
-  name: v.string(),
-  email: v.string(),
-  phone: v.string(),
-  address: v.string(),
-});
 
 router.get("/", async (req, res) => {
   const clients = await getClients(req, res);
@@ -21,8 +14,9 @@ router.get("/:id", (req, res) => {
   res.json({message: "Client fetched"});
 });
 
-router.post("/", validationBody(createClientSchema), (req, res) => {
-  res.json({message: "Client created"}).status(201);
+router.post("/", validationBody(rmpCreateClientPayloadSchema), async (req, res) => {
+  await createClient(req,res);
+  res.status(201).json();  
 });
 
 router.put("/:id", (req, res) => {

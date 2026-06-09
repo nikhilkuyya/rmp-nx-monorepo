@@ -26,7 +26,11 @@ export default [
             },
             {
               sourceTag: 'scope:api',
-              onlyDependOnLibsWithTags: ['scope:api', 'scope:shared'],
+              onlyDependOnLibsWithTags: ['scope:api'],
+            },
+            {
+              sourceTag: 'scope:api',
+              onlyDependOnLibsWithTags: ['scope:shared'],
             },
             {
               sourceTag: 'type:data',
