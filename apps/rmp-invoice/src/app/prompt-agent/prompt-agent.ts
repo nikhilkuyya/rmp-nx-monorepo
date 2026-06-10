@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, inject, linkedSignal, signal } from "@angular/core";
-import { RmpButtonDirective } from "@rmp/shared/ui-ang";
+import { RmpButtonDirective } from "@rmp/shared-ui-ang";
 import { PromptService } from "../services/prompt.service";
 import { form, FormField, required } from '@angular/forms/signals';
 

@@ -18,7 +18,7 @@
     "test:inv-ally:storybook": "npx test-storybook  --url=http://localhost:4400 --config-dir=libs/shared/ui-ang/.storybook",
     "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN --build-script-name=build:storybook",
     "lint": "nx run lint",
-    "migration:rollback": "nx run rmp-core:rollback",
+    "migration:rollback": "nx run rmp-core:rollback",    
     "migrate": "nx run rmp-core:migrate",
     "migration:make": "nx run rmp-core:make",
     "migration:status": "nx run rmp-core:status",

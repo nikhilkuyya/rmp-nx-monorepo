@@ -1,0 +1,20 @@
+{
+  "name": "rmp-shared-util",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/util/src",
+  "projectType": "library",
+  "tags": ["scope:shared"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],      
+      "options": {
+        "outputPath": "dist/libs/shared/util",
+        "tsConfig": "libs/shared/util/tsconfig.lib.json",
+        "packageJson": "libs/shared/util/package.json",
+        "main": "libs/shared/util/src/index.ts",
+        "assets": ["libs/shared/util/*.md"]
+      }
+    }
+  }
+}

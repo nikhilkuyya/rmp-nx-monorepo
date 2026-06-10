@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import { db } from '@rmp/shared-core';
+import { clientModelToDBMapper } from '@rmp/shared-util';
 
 export const getClients = async (req: Request, res: Response) => {
   try {
@@ -12,7 +13,9 @@ export const getClients = async (req: Request, res: Response) => {
 
 export const createClient = async (req: Request, res: Response) => {
   try {
-    await db('clients').insert({});
+    const payload = req.body;
+    const dbPayload= clientModelToDBMapper(payload)
+    await db('clients').insert(dbPayload);
   } catch (err) {
     console.error('error', err);
   }

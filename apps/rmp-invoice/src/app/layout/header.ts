@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { RmpButtonDirective } from "@rmp/shared/ui-ang";
+import { RmpButtonDirective } from "@rmp/shared-ui-ang";
 
 @Component({
   selector: 'rmp-header',
