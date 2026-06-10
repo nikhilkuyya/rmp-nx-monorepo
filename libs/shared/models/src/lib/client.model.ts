@@ -24,16 +24,16 @@ export const rmpCreateClientPayloadSchema = v.object({
 export type RMPCreateClientPaylod  = v.InferOutput<typeof rmpCreateClientPayloadSchema>;
 
 export interface RMPClientModel {
-    id: string;
-    companyName: string;
-    companyGSTIN: string;
-    companyAddress: string;
-    companyPostalCode: string;
-    companyCountry: string;
-    companyCity: string;
-    companyState: string;
-    currency: string;
-    invoiceEmail: string;
-    createdAt: string;
-    updatedAt: string;
+    id?: string;
+    company_name: string;
+    company_gstin: string;
+    company_address: string;
+    company_postal_code: string;
+    company_country: string;
+    company_city: string;
+    company_state: string;
+    currency?: string;
+    invoice_email: string;
+    created_at?: string;
+    updated_at?: string;
 }

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { validationBody } from "../middleware/validation";
-import { createClient, getClients } from '@rmp/invoices';
+import { createClient, getClients } from '@rmp/invoices-api';
 import { rmpCreateClientPayloadSchema  } from '@rmp/shared-models';
 
 const router = Router();

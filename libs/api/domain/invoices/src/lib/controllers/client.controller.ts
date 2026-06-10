@@ -1,22 +1,15 @@
 import type { Request, Response } from 'express';
 import { db } from '@rmp/shared-core';
-import { clientModelToDBMapper } from '@rmp/shared-util';
+import { mapClientModelToDBModel, mapDBModelToClientModel } from '@rmp/shared-util';
+import { RMPClientModel } from '@rmp/shared-models';
 
 export const getClients = async (req: Request, res: Response) => {
-  try {
-    const clients = await db('clients').select('*');
-    return clients;
-  } catch (err) {
-    console.error('error', err);
-  }
+    const clients = await db('clients').select('*') || [];
+    return clients.map((client: RMPClientModel) => mapDBModelToClientModel(client));   
 };
 
 export const createClient = async (req: Request, res: Response) => {
-  try {
     const payload = req.body;
-    const dbPayload= clientModelToDBMapper(payload)
+    const dbPayload = mapClientModelToDBModel(payload)
     await db('clients').insert(dbPayload);
-  } catch (err) {
-    console.error('error', err);
-  }
 };

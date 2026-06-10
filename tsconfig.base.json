@@ -23,7 +23,7 @@
       "@org/shop/shared-ui": ["libs/shop/shared-ui/src/index.ts"],
       "@rmp/shared-ui-ang": ["libs/shared/ui-ang/src/index.ts"],
       "@rmp/clients": ["libs/api/shared/clients/src/index.ts"],
-      "@rmp/invoices": ["libs/api/domain/invoices/src/index.ts"],
+      "@rmp/invoices-api": ["libs/api/domain/invoices/src/index.ts"],
       "@rmp/shared-models": ["libs/shared/models/src/index.ts"],
       "@rmp/invoice-web-core": ["libs/rmp-invoice-app/core/src/index.ts"],
       "@rmp/shared-core": ["libs/shared/core/src/index.ts"],

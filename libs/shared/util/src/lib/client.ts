@@ -1,18 +1,33 @@
-import { RMPClient, RMPClientModel } from '@rmp/shared-models';
+import { RMPClient, RMPClientModel, RMPCreateClientPaylod } from '@rmp/shared-models';
 
-export function clientModelToDBMapper(model: RMPClient): RMPClientModel {
+export function mapClientModelToDBModel(model: RMPCreateClientPaylod): RMPClientModel {
   return {
-    id: model.id || '',
-    companyName: model.companyName,
-    companyAddress: model.address.address,
-    companyCity: model.address.city,
-    companyCountry: model.address.country,
-    companyGSTIN: model.companyGSTIN,
-    companyPostalCode: model.address.postalCode,
-    companyState: model.address.state,
-    currency: model.currency || '',
-    createdAt: model.createdAt,
-    invoiceEmail: model.invoiceEmail,
-    updatedAt: model.updatedAt,
+    company_name: model.companyName,
+    company_gstin: model.companyGSTIn,
+    invoice_email: model.invoiceEmail,
+    company_address: model.address.address,
+    company_city: model.address.city,
+    company_country: model.address.country,
+    company_postal_code: model.address.postalCode,
+    company_state: model.address.state,       
   };
+}
+
+export function mapDBModelToClientModel(model: RMPClientModel) : RMPClient {
+  return {
+    address: {
+      address: model.company_address,
+      city: model.company_city,
+      country: model.company_country,
+      postalCode: model.company_postal_code,
+      state: model.company_state
+    },
+    companyGSTIN: model.company_gstin,
+    companyName: model.company_name,
+    createdAt: model.created_at || '',
+    updatedAt: model.updated_at || '',
+    invoiceEmail: model.invoice_email,
+    currency: model.currency,
+    id: model.id
+  }
 }
