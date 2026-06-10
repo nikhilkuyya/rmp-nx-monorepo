@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const _ = require("lodash");
 
 function findWorkspaceRoot(dir) {
   if (fs.existsSync(path.join(dir, 'nx.json'))) return dir;
@@ -23,17 +22,6 @@ module.exports = {
     useNullAsDefault: true,
     migrations: {
        directory: path.resolve(libSrcDir, 'migrations/rmp-db'),
-    },
-    // 1. Convert JS camelCase into DB snake_case for queries
-    wrapIdentifier: (value, origImpl) => {
-      origImpl(_.snakeCase(value));
-    },
-    //  // 2. Convert DB snake_case back into JS camelCase for responses
-    postProcessResponse: (result) => {
-      if (Array.isArray(result)) {
-        return result.map(row => _.mapKeys(row, (v, k) => _.camelCase(k)));
-      }
-      return result ? _.mapKeys(result, (v, k) => _.camelCase(k)) : result;
     },
     seeds: {
       directory: path.resolve(libSrcDir, 'seeds/rmp-db-dev')
