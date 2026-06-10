@@ -4,12 +4,24 @@ import { mapClientModelToDBModel, mapDBModelToClientModel } from '@rmp/shared-ut
 import { RMPClientModel } from '@rmp/shared-models';
 
 export const getClients = async (req: Request, res: Response) => {
-    const clients = await db('clients').select('*') || [];
-    return clients.map((client: RMPClientModel) => mapDBModelToClientModel(client));   
+    try {
+        const clients = await db('clients').select('*') || [];
+        const clientData = clients.map((client: RMPClientModel) => mapDBModelToClientModel(client));   
+        res.status(200).json(clientData);
+    }catch(err){
+        res.status(500).json(err)
+    }
+    
 };
 
 export const createClient = async (req: Request, res: Response) => {
-    const payload = req.body;
-    const dbPayload = mapClientModelToDBModel(payload)
-    await db('clients').insert(dbPayload);
+    try {
+        const payload = req.body;
+        const dbPayload = mapClientModelToDBModel(payload)
+        await db('clients').insert(dbPayload);
+        res.status(201).json();  
+    }catch(err){
+        res.status(500).json(err);
+    }
+
 };

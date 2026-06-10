@@ -5,19 +5,13 @@ import { rmpCreateClientPayloadSchema  } from '@rmp/shared-models';
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-  const clients = await getClients(req, res);
-  res.json(clients);
-});
+router.get("/", getClients);
 
 router.get("/:id", (req, res) => {
   res.json({message: "Client fetched"});
 });
 
-router.post("/", validationBody(rmpCreateClientPayloadSchema), async (req, res) => {
-  await createClient(req,res);
-  res.status(201).json();  
-});
+router.post("/", validationBody(rmpCreateClientPayloadSchema), createClient);
 
 router.put("/:id", (req, res) => {
   res.json({message: "Client updated"});
