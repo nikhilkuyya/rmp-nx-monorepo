@@ -1,17 +1,15 @@
 import type { Request, Response } from 'express';
 import { db } from '@rmp/shared-core';
-import { mapClientModelToDBModel, mapDBModelToClientModel } from '@rmp/shared-util';
-import { RMPClientModel } from '@rmp/shared-models';
+import { mapClientModelToDBModel } from '@rmp/shared-util';
 import { clientService } from '../services/client.service';
 import * as v from 'valibot';
 
 export const getClients = async (req: Request, res: Response) => {
   const { name } = req.query;
-  console.log({ query: req.query });
   if (name) {
     return getClientByName(req, res);
   } else {
-    return getClientNoFilter(req, res);
+    return getClientsNoFilter(req, res);
   }
 };
 
@@ -38,15 +36,15 @@ export const getClientByName = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Bad request' });
     }
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 };
 
-export const getClientNoFilter = async (req: Request, res: Response) => {
+export const getClientsNoFilter = async (req: Request, res: Response) => {
   try {
     const clients = await clientService.getClients();
     return res.status(200).json(clients);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 };
