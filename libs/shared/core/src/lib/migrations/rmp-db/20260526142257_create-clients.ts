@@ -2,7 +2,7 @@ import type { Knex } from "knex";
 
 module.exports.up = function up(knex: Knex): Promise<void> {
     return knex.schema.createTable('clients', function(table) {
-        table.uuid('id').primary();
+        table.uuid('id').primary().notNullable().defaultTo(knex.fn.uuid());
         table.string("company_name").notNullable();
         table.string("company_gstin").notNullable().unique();
         table.string("company_address").notNullable();
@@ -14,7 +14,7 @@ module.exports.up = function up(knex: Knex): Promise<void> {
         table.string("invoice_email").notNullable();
         table.timestamp("created_at",{
             useTz: false                        
-        }).defaultTo(knex.fn.now())
+        }).defaultTo(knex.fn.now());
         table.timestamp("updated_at",{ useTz: false}).defaultTo(knex.fn.now())
     });
 }
