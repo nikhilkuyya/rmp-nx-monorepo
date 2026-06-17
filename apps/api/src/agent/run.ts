@@ -14,7 +14,7 @@ const run = async (message: string) => {
       getClientByName,
     },
   });
-  return response.toolCalls;
+  return response.content;
 };
 
 export default run;

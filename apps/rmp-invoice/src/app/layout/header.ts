@@ -10,6 +10,7 @@ import { RmpButtonDirective } from "@rmp/shared-ui-ang";
         <nav class="flex-1 flex items-center gap-4">
             <a routerLink="/" data-role="dashboard-link">Dashboard</a>
             <a routerLink="/invoices" data-role="invoices-link">Invoices</a>
+            <a routerLink="/client" data-role="client-link">Client</a>
             <a routerLink="/prompt-agent" data-role="prompt-agent-link">Prompt Agent</a>
             <button rmpButton variant="secondary" size="medium" data-role="create-invoice-button">Create Invoice</button>
         </nav>
