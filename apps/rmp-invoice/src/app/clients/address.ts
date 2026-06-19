@@ -20,7 +20,7 @@ import { RMPInput } from '@rmp/shared-ui-ang';
   imports: [FormField, RMPInput, CommonModule],
 })
 export class NewRMPAddress {
-  address = model.required<RMPAddress>();
+  value = model.required<RMPAddress>();
 
-  addressForm = form<RMPAddress>(this.address);
+  addressForm = form<RMPAddress>(this.value);
 }

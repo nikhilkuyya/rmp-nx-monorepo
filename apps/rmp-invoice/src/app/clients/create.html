@@ -5,5 +5,5 @@
         label="Company GST"></rmp-input>
     <rmp-input [formField]="rmpClientForm.invoiceEmail" id="rmp-invoice-email-form-element"
         label="Company Email"></rmp-input>
-    <rmp-address [(address)]="this.rmpClientForm.address().value" />
+    <rmp-address [formField]="this.rmpClientForm.address" />
 </form>
