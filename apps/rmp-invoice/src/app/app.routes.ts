@@ -3,6 +3,7 @@ import { DashboardComponent } from './dashboard/dashboard';
 import { InvoicesComponent } from './invoices/invoices';
 import { PromptAgent } from './prompt-agent/prompt-agent';
 import { NewClient } from './clients/create';
+import { UserComponent } from '../test/test';
 
 export const appRoutes: Route[] = [
   {
@@ -20,6 +21,10 @@ export const appRoutes: Route[] = [
   {
     path: 'client',
     component: NewClient,
+  },
+  {
+    path: 'test',
+    component: UserComponent
   },
   {
     path: '**',
