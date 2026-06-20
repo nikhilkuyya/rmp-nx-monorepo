@@ -5,11 +5,11 @@ import { RMPCreateClientPaylod } from '@rmp/shared-models';
 import { RMPInput } from '@rmp/shared-ui-ang';
 import { NewRMPAddress } from './address';
 @Component({
-  selector: 'rmp-new-client',
+  selector: 'rmp-create-client',
   templateUrl: './create.html',
   imports: [RMPInput, FormField, CommonModule, NewRMPAddress],
 })
-export class NewRMPClient {
+export class CreateRMPClient {
     
   rmpClientModel = signal<RMPCreateClientPaylod>({
     companyName: '',

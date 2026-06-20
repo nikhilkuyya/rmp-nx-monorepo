@@ -1,0 +1,7 @@
+@if(clients.isLoading()){
+<pre>loading...</pre>
+}@else if(clients.error()) {
+<pre>Error loading client: {{clients.error() | json }}</pre>
+}@else {
+<pre>{{clients.value() | json }}</pre>
+}

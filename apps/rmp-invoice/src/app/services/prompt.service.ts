@@ -6,6 +6,7 @@ import { API_ROOT } from '@rmp/invoice-web-core';
 })
 export class PromptService {
   apiRoot = inject(API_ROOT);
+  
   getPromptResponse(prompt: Signal<string>): Resource<string> {
     return httpResource(
       () => {

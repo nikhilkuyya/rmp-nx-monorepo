@@ -2,8 +2,8 @@ import { Route } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard';
 import { InvoicesComponent } from './invoices/invoices';
 import { PromptAgent } from './prompt-agent/prompt-agent';
-import { NewRMPClient } from './clients/create';
 import { UserComponent } from '../test/test';
+import { RMPClient } from './clients';
 
 export const appRoutes: Route[] = [
   {
@@ -20,7 +20,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'client',
-    component: NewRMPClient,
+    component: RMPClient,
   },
   {
     path: 'test',
