@@ -9,13 +9,13 @@ import { NewRMPAddress } from './address';
   templateUrl: './create.html',
   imports: [RMPInput, FormField, CommonModule, NewRMPAddress],
 })
-export class NewClient {
+export class NewRMPClient {
     
   rmpClientModel = signal<RMPCreateClientPaylod>({
     companyName: '',
     companyGSTIn: '',
     address: {
-        address: '',
+        addressLine: '',
         city: '',
         postalCode: '',
         state: 'Telangana',

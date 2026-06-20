@@ -4,8 +4,8 @@ import { inputVariants } from './input-variant';
 @Component({
   selector: 'rmp-input',
   template: `
-    <div class="space-y-2">
-      <label [for]="id() + '-label'" [for]="id() + '-input'" class="block">{{ label() }}</label>
+    <div class="">
+      <label [id]="id() + '-label'" [for]="id() + '-input'" class="block">{{ label() }}</label>
       <input
         [class]="baseWrapperClasses"
         [id]="id() + '-input'"

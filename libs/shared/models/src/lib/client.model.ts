@@ -27,7 +27,7 @@ export interface RMPClientModel {
     id?: string;
     company_name: string;
     company_gstin: string;
-    company_address: string;
+    company_address_line: string;
     company_postal_code: string;
     company_country: string;
     company_city: string;

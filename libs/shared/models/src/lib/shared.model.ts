@@ -9,7 +9,7 @@ export const rmpStringSchema = v.pipe(
 export type RmpString = v.InferOutput<typeof rmpStringSchema>
 
 export const rmpAddressSchema = v.object({
-    address: rmpStringSchema,
+    addressLine: rmpStringSchema,
     postalCode: v.pipe(v.string(), v.minLength(6), v.maxLength(10)),
     city: rmpStringSchema,
     state: rmpStringSchema,

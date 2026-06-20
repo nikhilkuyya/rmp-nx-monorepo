@@ -5,7 +5,7 @@ module.exports.up = function up(knex: Knex): Promise<void> {
         table.uuid('id').primary().notNullable().defaultTo(knex.fn.uuid());
         table.string("company_name").notNullable();
         table.string("company_gstin").notNullable().unique();
-        table.string("company_address").notNullable();
+        table.string("company_address_line").notNullable();
         table.string("company_postal_code").notNullable();
         table.string("company_country").notNullable().defaultTo("Bharat");
         table.string("company_city").notNullable().defaultTo("Hyderabad");

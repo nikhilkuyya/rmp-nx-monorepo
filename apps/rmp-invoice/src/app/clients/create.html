@@ -1,9 +1,13 @@
-<form>
-    <rmp-input [formField]="rmpClientForm.companyName" id="rmp-company-name-form-element"
-        label="Company Name"></rmp-input>
-    <rmp-input [formField]="rmpClientForm.companyGSTIn" id="rmp-company-gstin-form-element"
-        label="Company GST"></rmp-input>
-    <rmp-input [formField]="rmpClientForm.invoiceEmail" id="rmp-invoice-email-form-element"
-        label="Company Email"></rmp-input>
-    <rmp-address [formField]="this.rmpClientForm.address" />
-</form>
+<div class="p-4">
+    <h2 class="text-lg font-normal mb-4 underline underline-offset-4"> Create New Client </h2>
+    <form class="space-y-4 ">
+        <rmp-input [formField]="rmpClientForm.companyName" id="rmp-company-name-form-element" label="Company Name"
+            class="block"></rmp-input>
+        <rmp-input [formField]="rmpClientForm.companyGSTIn" id="rmp-company-gstin-form-element" label="Company GST"
+            class="block"></rmp-input>
+        <rmp-input [formField]="rmpClientForm.invoiceEmail" id="rmp-invoice-email-form-element" label="Company Email"
+            class="block"></rmp-input>
+        <rmp-address [formField]="rmpClientForm.address" class="block" />
+    </form>
+
+</div>

@@ -6,7 +6,7 @@ import { RmpButtonDirective } from "@rmp/shared-ui-ang";
   selector: 'rmp-header',
   template: `
     <header data-role="header" class="flex align-center items-center">
-        <h1 data-role="header-title" class="flex-1 ">RMP Invoice</h1>
+        <h1 data-role="header-title" class="flex-1 font-bold text-xl">RMP Invoice</h1>
         <nav class="flex-1 flex items-center gap-4">
             <a routerLink="/" data-role="dashboard-link">Dashboard</a>
             <a routerLink="/invoices" data-role="invoices-link">Invoices</a>

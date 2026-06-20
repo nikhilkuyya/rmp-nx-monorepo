@@ -5,7 +5,7 @@ export function mapClientModelToDBModel(model: RMPCreateClientPaylod): RMPClient
     company_name: model.companyName,
     company_gstin: model.companyGSTIn,
     invoice_email: model.invoiceEmail,
-    company_address: model.address.address,
+    company_address_line: model.address.addressLine,
     company_city: model.address.city,
     company_country: model.address.country,
     company_postal_code: model.address.postalCode,
@@ -16,7 +16,7 @@ export function mapClientModelToDBModel(model: RMPCreateClientPaylod): RMPClient
 export function mapDBModelToClientModel(model: RMPClientModel) : RMPClient {
   return {
     address: {
-      address: model.company_address,
+      addressLine: model.company_address_line,
       city: model.company_city,
       country: model.company_country,
       postalCode: model.company_postal_code,
