@@ -1,6 +1,6 @@
 import { RMPClient, RMPClientModel, RMPCreateClientPaylod } from '@rmp/shared-models';
 
-export function mapClientModelToDBModel(model: RMPCreateClientPaylod): RMPClientModel {
+export function mapClientCreateModelToDBModel(model: RMPCreateClientPaylod): RMPClientModel {
   return {
     company_name: model.companyName,
     company_gstin: model.companyGSTIn,
@@ -13,7 +13,7 @@ export function mapClientModelToDBModel(model: RMPCreateClientPaylod): RMPClient
   };
 }
 
-export function mapDBModelToClientModel(model: RMPClientModel) : RMPClient {
+export function mapClientDBModelToUIModel(model: RMPClientModel) : RMPClient {
   return {
     address: {
       addressLine: model.company_address_line,
@@ -29,5 +29,21 @@ export function mapDBModelToClientModel(model: RMPClientModel) : RMPClient {
     invoiceEmail: model.invoice_email,
     currency: model.currency,
     id: model.id
+  }
+}
+
+export function mapClientUIModelToDBModel(model: RMPClient) : RMPClientModel {
+  return {
+    id: model.id,
+    company_name: model.companyName,
+    company_gstin: model.companyGSTIN,
+    invoice_email: model.invoiceEmail,
+    company_address_line: model.address.addressLine,
+    company_city: model.address.city,
+    company_country: model.address.country,
+    company_postal_code: model.address.postalCode,
+    company_state: model.address.state,
+    created_at: model.createdAt,    
+    currency: model.currency,
   }
 }

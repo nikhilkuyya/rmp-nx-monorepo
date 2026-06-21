@@ -1,10 +1,8 @@
 import type { Request, Response } from 'express';
-import { db } from '@rmp/shared-core';
-import { mapClientModelToDBModel } from '@rmp/shared-util';
 import { clientService } from '../services/client.service';
 import * as v from 'valibot';
 
-export const getClients = async (req: Request, res: Response) => {
+const getClients = async (req: Request, res: Response) => {
   const { name } = req.query;
   if (name) {
     return getClientByName(req, res);
@@ -13,18 +11,43 @@ export const getClients = async (req: Request, res: Response) => {
   }
 };
 
-export const createClient = async (req: Request, res: Response) => {
+const createClient = async (req: Request, res: Response) => {
   try {
     const payload = req.body;
-    const dbPayload = mapClientModelToDBModel(payload);
-    await db('clients').insert(dbPayload);
+    await clientService.createClient(payload);
     res.status(201).json();
   } catch (err) {
     res.status(500).json(err);
   }
 };
 
-export const getClientByName = async (req: Request, res: Response) => {
+const updateClient = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const payload = req.body;
+    const dbClient = await clientService.getClientById(id);
+    const newClientPaylod = {
+      ...dbClient,
+      ...payload
+    }
+    await clientService.updateClient(newClientPaylod);
+    res.status(200).json();
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+const getClientById = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const client = await clientService.getClientById(id);
+    res.status(200).json(client);
+  }catch(err){
+    res.status(500).json(err);
+  }
+}
+
+const getClientByName = async (req: Request, res: Response) => {
   try {
     const { name } = req.query;
     const nameParser = v.safeParse(v.string(), name);
@@ -40,7 +63,7 @@ export const getClientByName = async (req: Request, res: Response) => {
   }
 };
 
-export const getClientsNoFilter = async (req: Request, res: Response) => {
+const getClientsNoFilter = async (req: Request, res: Response) => {
   try {
     const clients = await clientService.getClients();
     return res.status(200).json(clients);
@@ -48,3 +71,11 @@ export const getClientsNoFilter = async (req: Request, res: Response) => {
     return res.status(500).json(err);
   }
 };
+
+export const clientController =  {
+  getClientById,
+  updateClient,
+  createClient,
+  getClients
+}
+
