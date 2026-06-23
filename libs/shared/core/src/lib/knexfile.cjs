@@ -21,9 +21,11 @@ module.exports = {
     },
     useNullAsDefault: true,
     migrations: {
+       extension: 'ts',
        directory: path.resolve(libSrcDir, 'migrations/rmp-db'),
     },
     seeds: {
+      extension: 'ts',
       directory: path.resolve(libSrcDir, 'seeds/rmp-db-dev')
     },
     debug: true

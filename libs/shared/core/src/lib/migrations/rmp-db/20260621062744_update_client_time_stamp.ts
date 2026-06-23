@@ -1,6 +1,6 @@
-import type { Knex } from "knex";
+import type { Knex } from 'knex';
 
-module.exports.up = function up(knex: Knex) : Promise<void> {
+module.exports.up = async function up(knex: Knex): Promise<void> {
   return knex.raw(`
         CREATE TRIGGER update_clients_timestamp
         AFTER UPDATE ON clients
@@ -11,9 +11,9 @@ module.exports.up = function up(knex: Knex) : Promise<void> {
             SET updated_at = CURRENT_TIMESTAMP 
             WHERE id = OLD.id;
         END;
-    `)
+    `);
 };
 
-module.exports.down = function(knex : Knex): Promise<void> {
-  return knex.raw(`DROP TRIGGER IF EXISTS update_clients_timestamp ON clients;`)
+module.exports.down = async function (knex: Knex): Promise<void> {
+  return knex.raw(`DROP TRIGGER IF EXISTS update_clients_timestamp;`);
 };
