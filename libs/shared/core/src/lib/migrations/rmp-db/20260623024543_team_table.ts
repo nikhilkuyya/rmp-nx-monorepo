@@ -3,7 +3,7 @@ import type { Knex } from 'knex';
 module.exports.up = async function up(knex: Knex): Promise<void> {
   return knex.schema.createTable('teams', function (table) {
     table.uuid('id').primary().notNullable().defaultTo(knex.fn.uuid());
-    table.string('company_name').notNullable();
+    table.string('company_name').notNullable().unique();
     table.string('company_gstin').notNullable().unique();
     table.string('company_address_line').notNullable();
     table.string('company_postal_code').notNullable();

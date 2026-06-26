@@ -2,7 +2,7 @@ import { rmpAddressSchema, rmpStringSchema } from "./shared.model";
 import * as v from 'valibot';
 
 export const rmpClientSchema = v.object({
-    id: v.optional(v.string()),
+    id: v.string(),
     companyName: rmpStringSchema,
     companyGSTIN: v.pipe(v.string(), v.minLength(10)),
     address: rmpAddressSchema,
@@ -12,7 +12,7 @@ export const rmpClientSchema = v.object({
     updatedAt: v.pipe(v.string())
 });
 
-export type RMPClient = v.InferInput<typeof rmpClientSchema>;
+export type RMPClient = v.InferOutput<typeof rmpClientSchema>;
 
 export const rmpCreateClientPayloadSchema = v.object({
     companyName: rmpStringSchema,

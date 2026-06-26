@@ -1,6 +1,5 @@
 import type { Request, Response } from 'express';
 import { clientService } from '../services/client.service';
-import * as v from 'valibot';
 
 const getClients = async (req: Request, res: Response) => {
   const { name } = req.query;
@@ -50,13 +49,9 @@ const getClientById = async (req: Request, res: Response) => {
 const getClientByName = async (req: Request, res: Response) => {
   try {
     const { name } = req.query;
-    const nameParser = v.safeParse(v.string(), name);
-    if (nameParser.success) {
-      const validName = nameParser.output;
-      const clientData = await clientService.getClientByName(validName);
+    if (name && typeof name === 'string') {
+      const clientData = await clientService.getClientByName(name);
       return res.status(200).json(clientData);
-    } else {
-      return res.status(400).json({ message: 'Bad request' });
     }
   } catch (err) {
     return res.status(500).json(err);

@@ -1,11 +1,19 @@
 import { Router } from 'express';
-import { validationBody } from '../middleware/validation';
+import { validationBody, validationQuery } from '../middleware/validation';
 import { clientController } from '@rmp/invoices-api';
 import { rmpCreateClientPayloadSchema } from '@rmp/shared-models';
 
+import * as v from 'valibot';
+
 const router = Router();
 
-router.get('/', clientController.getClients);
+const clientQuery = v.pipe(
+    v.object({
+        name: v.optional(v.string())
+    })
+);
+
+router.get('/', validationQuery(clientQuery), clientController.getClients);
 
 router.get('/:id', clientController.getClientById)
 

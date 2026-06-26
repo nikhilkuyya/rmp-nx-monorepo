@@ -1,5 +1,5 @@
 import express from 'express';
-import { clientRouter, invoiceRouter, agentRouter } from './routes';
+import { clientRouter, invoiceRouter, agentRouter, teamRouter } from './routes';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
@@ -31,9 +31,10 @@ app.get('/health', (req, res) => {
   res.send({ message: 'API is running' });
 });
 
-app.use("/api/agent", agentRouter);
-app.use("/api/client", clientRouter);
-app.use("/api/invoice", invoiceRouter);
+app.use('/api/agent', agentRouter);
+app.use('/api/client', clientRouter);
+app.use('/api/invoice', invoiceRouter);
+app.use('/api/team', teamRouter);
 
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
